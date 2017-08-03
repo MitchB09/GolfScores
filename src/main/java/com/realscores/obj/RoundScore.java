@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,7 +33,8 @@ public class RoundScore implements Serializable{
 	private boolean GIR;
 	
 	@Column(name="fairway")
-	private int fairwayHit;
+	@Enumerated(EnumType.ORDINAL)
+	private FairwayHitEnum fairwayHit;
 	
 	@Column(name="putts")
 	private int putts;
@@ -64,15 +67,15 @@ public class RoundScore implements Serializable{
 		return GIR;
 	}
 
-	public void setGIR(boolean gIR) {
-		GIR = gIR;
+	public void setGIR(boolean GIR) {
+		this.GIR = GIR;
 	}
 
-	public int getFairwayHit() {
+	public FairwayHitEnum getFairwayHit() {
 		return fairwayHit;
 	}
 
-	public void setFairwayHit(int fairwayHit) {
+	public void setFairwayHit(FairwayHitEnum fairwayHit) {
 		this.fairwayHit = fairwayHit;
 	}
 

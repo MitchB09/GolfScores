@@ -2,11 +2,11 @@ package com.realscores.obj;
 
 public enum FairwayHitEnum {
 	
-	YES   (1, "Yes"),
-	LEFT  (2, "Left"),
-	RIGHT (3, "Right"),
-	SHORT (4, "Short"),
-	LONG  (5, "Long");	
+	YES   (0, "Yes"),
+	LEFT  (1, "Left"),
+	RIGHT (2, "Right"),
+	SHORT (3, "Short"),
+	LONG  (4, "Long");	
 	
 	private int id;
 	private String description;

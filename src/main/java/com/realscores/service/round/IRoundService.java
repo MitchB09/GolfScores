@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.realscores.obj.Round;
 
-public interface IRoundClass {
+public interface IRoundService {
 	List<Round> getAllRounds();
 	Round getRoundById(int roundId);
     boolean addRound(Round round);

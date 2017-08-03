@@ -20,7 +20,7 @@ public class CourseDao implements ICourseDao {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Course> getAllCourses() {
-		String hql = "FROM Course as crs ORDER BY crs.id";
+		String hql = "FROM Course as crs ORDER BY crs.course_id";
 		return (List<Course>) entityManager.createQuery(hql).getResultList();
 	}
 

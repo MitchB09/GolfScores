@@ -27,7 +27,7 @@ public class Round implements Serializable {
 	@JoinColumn(name="course_id")
 	private int courseId;
 	
-	@Column(name="data")
+	@Column(name="date")
   	private LocalDateTime startTime;
   	
 	public int getId() {
