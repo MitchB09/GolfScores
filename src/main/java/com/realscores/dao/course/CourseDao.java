@@ -20,7 +20,7 @@ public class CourseDao implements ICourseDao {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Course> getAllCourses() {
-		String hql = "FROM Course as crs ORDER BY crs.course_id";
+		String hql = "FROM Course as crs JOIN crs.Hole as h ORDER BY crs.course_id";
 		return (List<Course>) entityManager.createQuery(hql).getResultList();
 	}
 
@@ -36,7 +36,7 @@ public class CourseDao implements ICourseDao {
 
 	@Override
 	public void updateCourse(Course course) {
-		Course foundCourse = getCourseById(course.getId());
+		Course foundCourse = getCourseById(course.getCourseId());
 		foundCourse.setName(course.getName());
 		entityManager.flush();
 	}

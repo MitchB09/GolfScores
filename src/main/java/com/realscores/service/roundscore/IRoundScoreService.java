@@ -2,7 +2,6 @@ package com.realscores.service.roundscore;
 
 import java.util.List;
 
-import com.realscores.obj.Round;
 import com.realscores.obj.RoundScore;
 
 public interface IRoundScoreService {

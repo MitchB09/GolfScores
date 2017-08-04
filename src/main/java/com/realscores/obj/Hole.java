@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,11 +21,11 @@ public class Hole implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="hole_id")
-    private int id;
+    private int hole_id;
 	
-	@ManyToOne(targetEntity = Course.class)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="course_id")
-	private int courseId;
+	private Course course;
 	
 	@Column(name="par")
 	private int par;
@@ -34,5 +35,45 @@ public class Hole implements Serializable {
 	
 	@Column(name="number")
 	private int holeNumber;
+
+	public int getHoleId() {
+		return hole_id;
+	}
+
+	public void setHoleId(int hole_id) {
+		this.hole_id = hole_id;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public int getPar() {
+		return par;
+	}
+
+	public void setPar(int par) {
+		this.par = par;
+	}
+
+	public int getYards() {
+		return yards;
+	}
+
+	public void setYards(int yards) {
+		this.yards = yards;
+	}
+
+	public int getHoleNumber() {
+		return holeNumber;
+	}
+
+	public void setHoleNumber(int holeNumber) {
+		this.holeNumber = holeNumber;
+	}
 
 }

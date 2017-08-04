@@ -47,7 +47,7 @@ public class CoursesController {
 	      return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/courses/{id}").buildAndExpand(course.getId()).toUri());
+        headers.setLocation(builder.path("/courses/{id}").buildAndExpand(course.getCourseId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	

@@ -2,7 +2,6 @@ package com.realscores.dao.roundscore;
 
 import java.util.List;
 
-import com.realscores.obj.Player;
 import com.realscores.obj.RoundScore;
 
 public interface IRoundScoreDao {
