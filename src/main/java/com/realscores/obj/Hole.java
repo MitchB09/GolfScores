@@ -12,8 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="hole")
+@Entity(name = "Hole")
+@Table(name = "hole")
 public class Hole implements Serializable {
 
 	private static final long serialVersionUID = 7862178050906377236L;
@@ -23,9 +23,8 @@ public class Hole implements Serializable {
 	@Column(name="hole_id")
     private int hole_id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="course_id")
-	private Course course;
+    @Column(name="course_id")
+	private int course_id;
 	
 	@Column(name="par")
 	private int par;
@@ -44,12 +43,12 @@ public class Hole implements Serializable {
 		this.hole_id = hole_id;
 	}
 
-	public Course getCourse() {
-		return course;
+	public int getCourseId() {
+		return course_id;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourseId(int course_id) {
+		this.course_id = course_id;
 	}
 
 	public int getPar() {

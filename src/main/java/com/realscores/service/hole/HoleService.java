@@ -26,7 +26,7 @@ public class HoleService implements IHoleService {
 
 	@Override
 	public boolean addHole(Hole hole) {
-		if (holeDao.HoleExists(hole.getCourse().getCourseId(), hole.getHoleId())){
+		if (holeDao.HoleExists(hole.getCourseId(), hole.getHoleId())){
 			return false;
 		} else {
 			holeDao.addHole(hole);

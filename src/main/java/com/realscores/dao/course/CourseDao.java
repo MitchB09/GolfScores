@@ -20,13 +20,13 @@ public class CourseDao implements ICourseDao {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Course> getAllCourses() {
-		String hql = "FROM Course as crs JOIN crs.Hole as h ORDER BY crs.course_id";
+		String hql = "FROM Course as crs ORDER BY crs.course_id";
 		return (List<Course>) entityManager.createQuery(hql).getResultList();
 	}
 
 	@Override
 	public Course getCourseById(int courseId) {
-		return entityManager.find(Course.class, courseId);
+		return (Course) entityManager.find(Course.class, courseId);
 	}
 
 	@Override
