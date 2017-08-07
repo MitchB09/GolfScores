@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="round_score")
-public class RoundScore implements Serializable{
+public class HoleScore implements Serializable{
 
 	private static final long serialVersionUID = -6778088324391438214L;
 

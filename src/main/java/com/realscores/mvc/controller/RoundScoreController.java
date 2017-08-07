@@ -16,37 +16,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.realscores.obj.RoundScore;
+import com.realscores.obj.HoleScore;
 import com.realscores.service.roundscore.IRoundScoreService;
 
-@RequestMapping("/rounds/scores")
+@RequestMapping("/rounds")
 public class RoundScoreController {
 	
 	@Autowired
 	IRoundScoreService roundScoreService;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<List<RoundScore>> getRoundScoresByRoundById(
+	public ResponseEntity<List<HoleScore>> getRoundScoresByRoundById(
 			@PathVariable("id") int roundId){		
-		List<RoundScore> roundScores = roundScoreService.getRoundScoresByRoundId(roundId);
-		return new ResponseEntity<List<RoundScore>>(roundScores, HttpStatus.OK);
+		List<HoleScore> holeScores = roundScoreService.getRoundScoresByRoundId(roundId);
+		return new ResponseEntity<List<HoleScore>>(holeScores, HttpStatus.OK);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> createRoundScore(@RequestBody RoundScore roundScore, UriComponentsBuilder builder){		
-		boolean flag = roundScoreService.addRoundScore(roundScore);
+	public ResponseEntity<Void> createRoundScore(@RequestBody HoleScore holeScore, UriComponentsBuilder builder){		
+		boolean flag = roundScoreService.addRoundScore(holeScore);
 		if (flag == false) {
 	      return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/players/{id}").buildAndExpand(roundScore.getPlayerRoundId()).toUri());
+        headers.setLocation(builder.path("/players/{id}").buildAndExpand(holeScore.getPlayerRoundId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	
 	@PutMapping()
-	public ResponseEntity<RoundScore> updatePlayer(@RequestBody RoundScore roundScore) {
-		roundScoreService.updateRoundScore(roundScore);
-		return new ResponseEntity<RoundScore>(roundScore, HttpStatus.OK);
+	public ResponseEntity<HoleScore> updatePlayer(@RequestBody HoleScore holeScore) {
+		roundScoreService.updateRoundScore(holeScore);
+		return new ResponseEntity<HoleScore>(holeScore, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")

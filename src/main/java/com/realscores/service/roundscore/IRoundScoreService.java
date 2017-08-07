@@ -2,13 +2,13 @@ package com.realscores.service.roundscore;
 
 import java.util.List;
 
-import com.realscores.obj.RoundScore;
+import com.realscores.obj.HoleScore;
 
 public interface IRoundScoreService {
-	RoundScore getRoundScoreById(int roundScoreId);
-	List<RoundScore> getRoundScoreByPlayerRoundId(int playerRoundId);
-	List<RoundScore> getRoundScoresByRoundId(int roundId);
-    boolean addRoundScore(RoundScore roundScore);
-    void updateRoundScore(RoundScore roundScore);
+	HoleScore getRoundScoreById(int roundScoreId);
+	List<HoleScore> getRoundScoreByPlayerRoundId(int playerRoundId);
+	List<HoleScore> getRoundScoresByRoundId(int roundId);
+    boolean addRoundScore(HoleScore holeScore);
+    void updateRoundScore(HoleScore holeScore);
     void deleteRoundScore(int roundScoreId);
 }

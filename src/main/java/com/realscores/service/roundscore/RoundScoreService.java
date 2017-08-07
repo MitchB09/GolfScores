@@ -5,48 +5,48 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.realscores.dao.roundscore.IRoundScoreDao;
-import com.realscores.obj.RoundScore;
+import com.realscores.dao.holescore.IHoleScoreDao;
+import com.realscores.obj.HoleScore;
 
 @Service
 public class RoundScoreService implements IRoundScoreService {
 
 	@Autowired
-	private IRoundScoreDao roundScoreDao; 
+	private IHoleScoreDao holeScoreDao; 
 	
 	@Override
-	public RoundScore getRoundScoreById(int roundScoreId) {
-		return roundScoreDao.getRoundScoreById(roundScoreId);
+	public HoleScore getRoundScoreById(int roundScoreId) {
+		return holeScoreDao.getRoundScoreById(roundScoreId);
 	}
 
 	@Override
-	public List<RoundScore> getRoundScoreByPlayerRoundId(int playerRoundId) {
-		return roundScoreDao.getRoundScoreByPlayerRoundId(playerRoundId);
+	public List<HoleScore> getRoundScoreByPlayerRoundId(int playerRoundId) {
+		return holeScoreDao.getRoundScoreByPlayerRoundId(playerRoundId);
 	}
 
 	@Override
-	public List<RoundScore> getRoundScoresByRoundId(int roundId) {
-		return roundScoreDao.getRoundScoresByRoundId(roundId);
+	public List<HoleScore> getRoundScoresByRoundId(int roundId) {
+		return holeScoreDao.getRoundScoresByRoundId(roundId);
 	}
 
 	@Override
-	public boolean addRoundScore(RoundScore roundScore) {
-		if (roundScoreDao.RoundScoreExists(roundScore.getPlayerRoundId(), roundScore.getHoleId())){
+	public boolean addRoundScore(HoleScore holeScore) {
+		if (holeScoreDao.RoundScoreExists(holeScore.getPlayerRoundId(), holeScore.getHoleId())){
 			return false;
 		} else {
-			roundScoreDao.addRoundScore(roundScore);
+			holeScoreDao.addRoundScore(holeScore);
 			return true;
 		}
 	}
 
 	@Override
-	public void updateRoundScore(RoundScore roundScore) {
-		roundScoreDao.updateRoundScore(roundScore);
+	public void updateRoundScore(HoleScore holeScore) {
+		holeScoreDao.updateRoundScore(holeScore);
 	}
 
 	@Override
 	public void deleteRoundScore(int roundScoreId) {
-		roundScoreDao.deleteRoundScore(roundScoreId);
+		holeScoreDao.deleteRoundScore(roundScoreId);
 	}
 
 }
