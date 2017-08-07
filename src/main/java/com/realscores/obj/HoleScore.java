@@ -11,63 +11,62 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="round_score")
+@Entity(name="Hole_score")
+@Table(name="hole_score")
 public class HoleScore implements Serializable{
 
 	private static final long serialVersionUID = -6778088324391438214L;
 
 	@Id
-	@ManyToOne(targetEntity = PlayerRound.class)
-	@JoinColumn(name="player_round_id")
-	private int playerRoundId;
+	@Column(name="player_round_id")
+	private int player_round_id;
 	
 	@ManyToOne(targetEntity = Hole.class)
 	@JoinColumn(name="hole_id")
-	private int holeId;
+	private Hole hole;
 	
-	@Column(name="score")
-	private int score;
+	@Column(name="strokes")
+	private int strokes;
 	
 	@Column(name="gir")
-	private boolean GIR;
+	private Boolean GIR;
 	
 	@Column(name="fairway")
 	@Enumerated(EnumType.ORDINAL)
 	private FairwayHitEnum fairwayHit;
 	
 	@Column(name="putts")
-	private int putts;
+	private Integer putts;
 
 	public int getPlayerRoundId() {
-		return playerRoundId;
+		return player_round_id;
 	}
 
-	public void setPlayerRoundId(int playerRoundId) {
-		this.playerRoundId = playerRoundId;
+	public void setPlayerRoundId(int player_round_id) {
+		this.player_round_id = player_round_id;
 	}
 
-	public int getHoleId() {
-		return holeId;
+	public Hole getHole() {
+		return hole;
 	}
 
-	public void setHoleId(int holeId) {
-		this.holeId = holeId;
+	public void setHole(Hole hole) {
+		this.hole = hole;
 	}
 
-	public int getScore() {
-		return score;
+	public int getStrokes() {
+		return strokes;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public void setStrokes(int strokes) {
+		this.strokes = strokes;
 	}
 
-	public boolean isGIR() {
+	public Boolean isGIR() {
 		return GIR;
 	}
 
-	public void setGIR(boolean GIR) {
+	public void setGIR(Boolean GIR) {
 		this.GIR = GIR;
 	}
 
@@ -79,11 +78,11 @@ public class HoleScore implements Serializable{
 		this.fairwayHit = fairwayHit;
 	}
 
-	public int getPutts() {
+	public Integer getPutts() {
 		return putts;
 	}
 
-	public void setPutts(int putts) {
+	public void setPutts(Integer putts) {
 		this.putts = putts;
 	}
 }

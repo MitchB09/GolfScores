@@ -26,7 +26,7 @@ public class RoundService implements IRoundService {
 
 	@Override
 	public boolean addRound(Round round) {
-		if (roundDao.roundExists(round.getId())){
+		if (roundDao.roundExists(round.getRoundId())){
 			return false;
 		} else {
 			roundDao.addRound(round);

@@ -45,7 +45,7 @@ public class RoundDao implements IRoundDao {
 
 	@Override
 	public void updateRound(Round round) {
-		Round foundRound = getRoundById(round.getId());
+		Round foundRound = getRoundById(round.getRoundId());
 		foundRound.setCourseId(round.getCourseId());
 		foundRound.setStartTime(round.getStartTime());
 		entityManager.flush();

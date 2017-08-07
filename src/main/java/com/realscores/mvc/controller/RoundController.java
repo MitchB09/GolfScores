@@ -47,7 +47,7 @@ public class RoundController {
 	      return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/rounds/{id}").buildAndExpand(round.getId()).toUri());
+        headers.setLocation(builder.path("/rounds/{id}").buildAndExpand(round.getRoundId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	

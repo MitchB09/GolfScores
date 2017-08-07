@@ -1,8 +1,8 @@
 package com.realscores.obj;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -23,24 +23,24 @@ public class Round implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="round_id")
-	private int id;
+	private int round_id;
 	
 	@Column(name="course_id")
 	private int courseId;
 	
 	@Column(name="date")
-  	private LocalDateTime startTime;
+  	private Date startTime;
 	
 	@OneToMany
 	@JoinColumn(name = "round_id")
 	private List<PlayerRound> playerRounds = new ArrayList<PlayerRound>();
   	
-	public int getId() {
-	  	return id;
+	public int getRoundId() {
+	  	return round_id;
   	}
   
-  	public void setId(int id) {
-		this.id = id;
+  	public void setId(int round_id) {
+		this.round_id = round_id;
 	}
 	
   	public int getCourseId() {
@@ -51,11 +51,11 @@ public class Round implements Serializable {
 		this.courseId = courseId;
 	}
 	
-  	public LocalDateTime getStartTime() {
+  	public Date getStartTime() {
 		return startTime;
 	}
 	
-  	public void setStartTime(LocalDateTime startTime) {
+  	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
 

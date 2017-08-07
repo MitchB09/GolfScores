@@ -1,9 +1,14 @@
 package com.realscores.obj;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,37 +17,50 @@ public class PlayerRound implements Serializable{
 
 	private static final long serialVersionUID = -7642795917197186404L;
 
+	@Id
+	@Column(name="player_round_id")
+	private int player_round_id;
+	
 	@Column(name="round_id")
 	private int round_id;
 	
-	@Column(name="player_id")
-	private int player_id;
-	
-	@Column(name="player_round_id")
-	private int player_round_id;
+	@ManyToOne
+	@JoinColumn(name = "player_id")
+	private Player player;
 
-	public int getRound_id() {
+	@OneToMany
+	@JoinColumn(name = "player_round_id")
+	private List<HoleScore> scores;
+
+	public int getRoundId() {
 		return round_id;
 	}
-
-	public void setRound_id(int round_id) {
-		this.round_id = round_id;
-	}
-
-	public int getPlayer_id() {
-		return player_id;
-	}
-
-	public void setPlayer_id(int player_id) {
-		this.player_id = player_id;
-	}
-
-	public int getPlayer_round_id() {
+	
+	public int getPlayerRoundId() {
 		return player_round_id;
 	}
 
-	public void setPlayer_round_id(int player_round_id) {
+	public void setPlayerRoundId(int player_round_id) {
 		this.player_round_id = player_round_id;
 	}
 
+	public void setRoundId(int round_id) {
+		this.round_id = round_id;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	public List<HoleScore> getScores() {
+		return scores;
+	}
+
+	public void setScores(List<HoleScore> scores) {
+		this.scores = scores;
+	}
 }
