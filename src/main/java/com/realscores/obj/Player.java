@@ -16,8 +16,8 @@ public class Player implements Serializable {
 	private static final long serialVersionUID = 7082430161480071588L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="player_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	@Column(name="name")

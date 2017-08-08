@@ -21,6 +21,7 @@ public class HoleScore implements Serializable{
 	@Column(name="player_round_id")
 	private int player_round_id;
 	
+	@Id
 	@ManyToOne(targetEntity = Hole.class)
 	@JoinColumn(name="hole_id")
 	private Hole hole;
@@ -60,6 +61,18 @@ public class HoleScore implements Serializable{
 
 	public void setStrokes(int strokes) {
 		this.strokes = strokes;
+	}
+	
+	public String getScore() {
+		if (this.hole != null){
+			int score = strokes - hole.getPar();
+			if (score > 0){
+				return "+" + String.valueOf(score);
+			}
+			return String.valueOf(score);
+		} else {
+			return null;
+		}
 	}
 
 	public Boolean isGIR() {

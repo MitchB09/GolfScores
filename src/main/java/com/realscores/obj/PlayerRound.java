@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,6 +21,7 @@ public class PlayerRound implements Serializable{
 
 	@Id
 	@Column(name="player_round_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int player_round_id;
 	
 	@Column(name="round_id")
@@ -50,7 +53,7 @@ public class PlayerRound implements Serializable{
 
 	public Player getPlayer() {
 		return player;
-	}
+	}	
 
 	public void setPlayer(Player player) {
 		this.player = player;
@@ -62,5 +65,13 @@ public class PlayerRound implements Serializable{
 
 	public void setScores(List<HoleScore> scores) {
 		this.scores = scores;
+	}
+	
+	public int getTotalStokes() {
+		int totalStrokes = 0;
+		for (HoleScore holeScore: scores){
+			totalStrokes += holeScore.getStrokes();
+		}
+		return totalStrokes;
 	}
 }

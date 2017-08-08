@@ -1,5 +1,8 @@
 package com.realscores.obj;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum FairwayHitEnum {
 	
 	YES   (0, "Yes"),

@@ -21,8 +21,8 @@ public class Round implements Serializable {
 	private static final long serialVersionUID = 7745335780792154475L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="round_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int round_id;
 	
 	@Column(name="course_id")

@@ -21,26 +21,26 @@ import com.realscores.obj.Round;
 import com.realscores.service.round.IRoundService;
 
 @Controller
-@RequestMapping("/rounds")
+@RequestMapping()
 public class RoundController {
 	
 	@Autowired
 	IRoundService roundService;
 	
-	@GetMapping()
+	@GetMapping("/rounds")
 	public ResponseEntity<List<Round>> getRounds(){		
 		List<Round> rounds = roundService.getAllRounds();
 		return new ResponseEntity<List<Round>>(rounds, HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/rounds/{id}")
 	public ResponseEntity<Round> getRoundById(
 			@PathVariable("id") int roundId){		
 		Round round = roundService.getRoundById(roundId);
 		return new ResponseEntity<Round>(round, HttpStatus.OK);
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(name="/rounds", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createRound(@RequestBody Round round, UriComponentsBuilder builder){		
 		boolean flag = roundService.addRound(round);
 		if (flag == false) {
@@ -51,13 +51,13 @@ public class RoundController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping()
+	@PutMapping("/rounds")
 	public ResponseEntity<Round> updateRound(@RequestBody Round round) {
 		roundService.updateRound(round);
 		return new ResponseEntity<Round>(round, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/rounds/{id}")
 	public ResponseEntity<Void> deleteRound(@PathVariable("id") Integer id) {
 		roundService.deleteRound(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

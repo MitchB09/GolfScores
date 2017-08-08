@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.realscores.obj.Course;
+import com.realscores.obj.Round;
 import com.realscores.service.course.ICourseService;
+import com.realscores.service.round.IRoundService;
 
 @RestController
 @RequestMapping("/courses")
@@ -26,6 +28,9 @@ public class CoursesController {
   
 	@Autowired
 	ICourseService courseService;
+	
+	@Autowired
+	IRoundService roundService;
 	
 	@GetMapping()
 	public ResponseEntity<List<Course>> getCourses(){		
@@ -39,6 +44,14 @@ public class CoursesController {
 		Course course = courseService.getCourseById(courseId);
 		return new ResponseEntity<Course>(course, HttpStatus.OK);
 	}
+	
+	@GetMapping("/{courseId}/rounds")
+	public ResponseEntity<List<Round>> getRoundByCourseId(
+			@PathVariable("courseId") int courseId){		
+		List<Round> rounds = roundService.getRoundsByCourseId(courseId);
+		return new ResponseEntity<List<Round>>(rounds, HttpStatus.OK);
+	}
+	
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createCourse(@RequestBody Course course, UriComponentsBuilder builder){		
