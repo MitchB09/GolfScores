@@ -28,7 +28,7 @@ public class HoleScore implements Serializable{
 	
 	@Column(name="strokes")
 	private int strokes;
-	
+		
 	@Column(name="gir")
 	private Boolean GIR;
 	

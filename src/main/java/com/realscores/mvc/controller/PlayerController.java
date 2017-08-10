@@ -51,10 +51,16 @@ public class PlayerController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping()
-	public ResponseEntity<Player> updatePlayer(@RequestBody Player player) {
+	@PutMapping(value = "/{playerId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> updatePlayer(
+			@PathVariable("playerId") int playerId,
+			@RequestBody Player player) {
+		
+		if (player.getId() != playerId){
+			return new ResponseEntity<Object>("Cannot update player id", HttpStatus.UNPROCESSABLE_ENTITY);
+		}
 		playerService.updatePlayer(player);
-		return new ResponseEntity<Player>(player, HttpStatus.OK);
+		return new ResponseEntity<Object>(player, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
