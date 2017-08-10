@@ -40,7 +40,7 @@ public class PlayerControllerTest extends BaseControllerTest
   private MockMvc mockMvc;
   
   @Before
-  public void setUp()//
+  public void setUp()
   {
     MockitoAnnotations.initMocks(this);
     mockMvc = MockMvcBuilders.standaloneSetup(controller).build();

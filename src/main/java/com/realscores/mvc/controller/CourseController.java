@@ -24,7 +24,7 @@ import com.realscores.service.round.IRoundService;
 
 @RestController
 @RequestMapping("/courses")
-public class CoursesController {
+public class CourseController {
   
 	@Autowired
 	ICourseService courseService;
@@ -64,10 +64,17 @@ public class CoursesController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping()
-	public ResponseEntity<Course> updateCourse(@RequestBody Course course) {
+	@PutMapping(value = "/{courseId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> updateCourse(
+			@PathVariable("courseId") int courseId,
+			@RequestBody Course course) {
+		
+		if (course.getCourseId() != courseId){
+			return new ResponseEntity<Object>("Cannot update course id", HttpStatus.UNPROCESSABLE_ENTITY);
+		}
+		
 		courseService.updateCourse(course);
-		return new ResponseEntity<Course>(course, HttpStatus.OK);
+		return new ResponseEntity<Object>(course, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
